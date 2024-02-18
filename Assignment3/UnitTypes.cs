@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assignment3
 {
+    #region Enums
     internal enum UnitTypes
     {
         Metric = 0,
         Imperial
     }
+    #endregion
 }
