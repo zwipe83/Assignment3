@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Assignment3
 {
+    /// <summary>
+    /// Enumerate weight categories
+    /// </summary>
     internal enum WeightCategories
     {
         [Description("Underweight")]
