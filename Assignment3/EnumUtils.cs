@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignment3
 {
     internal class EnumUtils
     {
+        #region Methods
+        /// <summary>
+        /// TODO: Can this be simplified further?
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string GetDescription(Enum value)
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
-            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+            DescriptionAttribute? attribute = fi?.GetCustomAttribute<DescriptionAttribute>();
 
-            if (attributes != null && attributes.Length > 0)
-                return attributes[0].Description;
-
-            return value.ToString();
+            return attribute?.Description ?? value.ToString(); //Null check, return input value
         }
+        #endregion
     }
 }
