@@ -1,28 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment3
+﻿namespace Assignment3
 {
-    internal class UnitConversion
+    internal static class UnitConversion
     {
-        public double Convert(double amount, Func<double, double> conversion)
+        #region Delegates
+        /// <summary>
+        /// Conversion delegate methods
+        /// </summary>
+        private static Func<double, double> _feetToInches = x => x * 12;
+        private static Func<double, double> _inchesToFeet = x => x * 0.0833;
+        private static Func<double, double> _inchesToCentimeters = x => x * 2.54;
+        private static Func<double, double> _centimetersToMeters = x => x / 100;
+        private static Func<double, double> _metersToCentimeters = x => x * 100;
+        private static Func<double, double> _centimetersToFeet = x => x / 30.48;
+        private static Func<double, double> _feetToCentimeters = x => x * 30.48;
+        private static Func<double, double> _kilogramsToPounds = x => x / 0.45359237;
+        private static Func<double, double> _poundsToKilograms = x => x * 0.45359237;
+        #endregion
+        #region Properties
+        public static Func<double, double> FeetToInches
         {
-            return conversion(amount);
+            get { return _feetToInches; }
         }
-
-        // Example usage:
-        //var celsiusToFahrenheit = Converter.Convert(11M, Converter.CelsiusToFahrenheit);
-        //var fahrenheitToCelsius = Converter.Convert(11M, Converter.FahrenheitToCelsius);
-    }
-
-    public static class Converter
-    {
-        public static Func<double, double> FeetToInches = x => x * 12;
-        public static Func<double, double> InchesToFeet = x => x * 0.0833;
-        public static Func<double, double> CentimetersToMeters = x => x / 100;
-        public static Func<double, double> MetersToCentimeters = x => x * 100;
+        public static Func<double, double> InchesToFeet
+        {
+            get { return _inchesToFeet; }
+        }
+        public static Func<double, double> InchesToCentimeters
+        {
+            get { return _inchesToCentimeters; }
+        }
+        public static Func<double, double> CentimetersToMeters
+        {
+            get { return _centimetersToMeters; }
+        }
+        public static Func<double, double> MetersToCentimeters
+        {
+            get { return _metersToCentimeters; }
+        }
+        public static Func<double, double> CentimetersToFeet
+        {
+            get { return _centimetersToFeet; }
+        }
+        public static Func<double, double> KilogramsToPounds
+        {
+            get { return _kilogramsToPounds; }
+        }
+        public static Func<double, double> FeetToCentimeters
+        {
+            get { return _feetToCentimeters; }
+        }
+        public static Func<double, double> PoundsToKilograms
+        {
+            get { return _poundsToKilograms; }
+        }
+        #endregion
     }
 }
