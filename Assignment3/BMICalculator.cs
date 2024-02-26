@@ -51,7 +51,7 @@ namespace Assignment3
         /// </summary>
         /// <param name="unit"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void CalculateBMI(UnitTypes unit)
+        internal void CalculateBMI(UnitTypes unit)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Assignment3
         /// Calculates normal weight range for current user
         /// </summary>
         /// <param name="unit"></param>
-        public void CalculateNormalWeight(UnitTypes unit)
+        internal void CalculateNormalWeight(UnitTypes unit)
         {
             switch (unit)
             {

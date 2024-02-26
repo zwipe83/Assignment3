@@ -9,20 +9,74 @@
   </Class>
   <Class Name="Assignment3.BMICalculator">
     <Position X="2.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Assignment3.BMICalculator.WeightRange">
+        <TypeIdentifier>
+          <NewMemberFileName>BMICalculator.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAgAAQAIAAAAAQAACAEAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIgAiQApABYAAQAQAABIBAQGAAAgAAAgQAAABAg=</HashCode>
       <FileName>BMICalculator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Assignment3.UserInput">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAIICAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>UserInput.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Assignment3.Metric">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Assignment3.Metric.Length">
+        <TypeIdentifier>
+          <NewMemberFileName>UnitTypes.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Assignment3.Metric.Weight">
+        <TypeIdentifier>
+          <NewMemberFileName>UnitTypes.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assignment3.Imperial">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Assignment3.Imperial.Length">
+        <TypeIdentifier>
+          <NewMemberFileName>UnitTypes.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Assignment3.Imperial.Weight">
+        <TypeIdentifier>
+          <NewMemberFileName>UnitTypes.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="Assignment3.UnitTypes">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>UnitTypes.cs</FileName>
