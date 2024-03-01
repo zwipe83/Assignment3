@@ -6,6 +6,7 @@ namespace Assignment3
         private readonly BMICalculator bmiCalculator = new();
         private readonly UserInput ui = new();
         private readonly SavingCalculator savingCalculator = new();
+        private readonly BMRCalculator bmrCalculator = new();
         #endregion
         #region Constructors
         public MainForm()

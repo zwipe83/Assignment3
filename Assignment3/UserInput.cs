@@ -63,7 +63,7 @@
                 return 0;
             }
 
-            return int.TryParse(text.Trim(), out int i) ? i: 0;
+            return int.TryParse(text.Trim(), out int i) ? i : 0;
         }
     }
 }

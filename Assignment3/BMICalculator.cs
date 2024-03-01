@@ -12,7 +12,7 @@ namespace Assignment3
         private double bmi = 0.0; // TODO: Maybe not needed?
         private readonly double imperialConversionFactor = 703.0;
         private readonly double metricConversionFactor = 1.0;
-        private WeightCategories weightCategory; // TODO: Maybe not needed?
+        private WeightCategory weightCategory; // TODO: Maybe not needed?
         private double[] normalWeight = [0.0, 0.0];// TODO: Maybe not needed?
 
         internal enum WeightRange
@@ -27,12 +27,12 @@ namespace Assignment3
         public void SetHeight(double value, double inches) { height = value + InchesToFeet(inches); } //Feet
         public void SetWeight(double value) { weight = value; }
         public void SetUnit(UnitTypes value) { unit = value; }
-        public void SetCategory(WeightCategories value) { weightCategory = value; }
+        public void SetCategory(WeightCategory value) { weightCategory = value; }
         public string GetName() { return name ?? ""; }
         public double GetHeight() { return height; }
         public double GetWeight() { return weight; }
         public UnitTypes GetUnit() { return unit; }
-        public WeightCategories GetWeightCategory() { return weightCategory; }
+        public WeightCategory GetWeightCategory() { return weightCategory; }
         public double GetBmi() { return bmi; }
         public double[] GetNormalWeight() { return normalWeight; }
         #endregion
@@ -100,31 +100,31 @@ namespace Assignment3
         /// Figure out which weight category current user falls under
         /// </summary>
         /// <returns></returns>
-        private WeightCategories GetCategory()
+        private WeightCategory GetCategory()
         {
             if (bmi < 18.5)
             {
-                return WeightCategories.UnderWeight;
+                return WeightCategory.UnderWeight;
             }
             else if (bmi >= 18.5 && bmi <= 24.9)
             {
-                return WeightCategories.NormalWeight;
+                return WeightCategory.NormalWeight;
             }
             else if (bmi >= 25.0 && bmi <= 29.9)
             {
-                return WeightCategories.OverWeight;
+                return WeightCategory.OverWeight;
             }
             else if (bmi >= 30.0 && bmi <= 34.9)
             {
-                return WeightCategories.ObesityClassI;
+                return WeightCategory.ObesityClassI;
             }
             else if (bmi >= 35.0 && bmi <= 39.9)
             {
-                return WeightCategories.ObesityClassII;
+                return WeightCategory.ObesityClassII;
             }
             else
             {
-                return WeightCategories.ObesityClassIII;
+                return WeightCategory.ObesityClassIII;
             }
         }
         #endregion
