@@ -66,7 +66,7 @@ namespace Assignment3
                     default:
                         throw new NotImplementedException();
                 }
-                weightCategory = CheckCategory();
+                weightCategory = GetCategory();
             }
             catch (Exception)
             {
@@ -100,7 +100,7 @@ namespace Assignment3
         /// Figure out which weight category current user falls under
         /// </summary>
         /// <returns></returns>
-        private WeightCategories CheckCategory()
+        private WeightCategories GetCategory()
         {
             if (bmi < 18.5)
             {

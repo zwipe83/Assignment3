@@ -5,6 +5,7 @@ namespace Assignment3
         #region Fields
         private readonly BMICalculator bmiCalculator = new();
         private readonly UserInput ui = new();
+        private readonly SavingCalculator savingCalculator = new();
         #endregion
         #region Constructors
         public MainForm()
@@ -85,6 +86,27 @@ namespace Assignment3
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Perform savings calculation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCalculateSaving_Click(object sender, EventArgs e)
+        {
+            savingCalculator.InitialDeposit = ui.ReadTextAsDecimal(txtInitial.Text);
+            savingCalculator.MonthlyDeposit = ui.ReadTextAsDecimal(txtMonthly.Text);
+            savingCalculator.PeriodInYears = ui.ReadTextAsInt(txtPeriod.Text);
+            savingCalculator.YearlyInterestRate = ui.ReadTextAsDouble(txtGrowth.Text);
+            savingCalculator.YearlyFees = ui.ReadTextAsDouble(txtFees.Text);
+
+            savingCalculator.CalculateFinalBalance();
+
+            lblAmountEarnedValue.Text = $"{savingCalculator.TotalAmountEarned:N2}";
+            lblAmountPaidValue.Text = $"{savingCalculator.TotalAmountPaid:N2}";
+            lblFinalAmountValue.Text = $"{savingCalculator.Balance:N2}";
+            lblTotalFeesValue.Text = $"{savingCalculator.TotalFees:N2}";
         }
         #endregion
     }
