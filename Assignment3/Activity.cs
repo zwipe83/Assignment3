@@ -5,6 +5,7 @@ namespace Assignment3
 
     internal static class Activity
     {
+        #region Fields
         private static readonly Dictionary<ActivityLevel, double> _activityFactors = new Dictionary<ActivityLevel, double>
         {
             { ActivityLevel.Sedentary, 1.2 },
@@ -13,9 +14,11 @@ namespace Assignment3
             { ActivityLevel.VeryActive, 1.725 },
             { ActivityLevel.ExtraActive, 1.9 }
         };
-
+        #endregion
+        #region Properties
         public static Dictionary<ActivityLevel, double> ActivityFactors { get { return _activityFactors; } }
-
+        #endregion
+        #region Enums
         internal enum ActivityLevel
         {
             [Description("Little or no exercise")]
@@ -29,10 +32,12 @@ namespace Assignment3
             [Description("Hard exercise or physical job")]
             ExtraActive
         }
-
+        #endregion
+        #region Methods
         public static double GetActivityFactor(ActivityLevel activityLevel)
         {
             return ActivityFactors[activityLevel];
         }
+        #endregion
     }
 }

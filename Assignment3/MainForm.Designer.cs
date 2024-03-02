@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnCalculate = new Button();
             txtName = new TextBox();
             txtWeight = new TextBox();
@@ -70,11 +71,30 @@
             lblAmountEarned = new Label();
             lblAmountPaidValue = new Label();
             lblAmountPaid = new Label();
+            grpBmrCalculator = new GroupBox();
+            lbBmrResults = new ListBox();
+            grpWeeklyActivity = new GroupBox();
+            rdbExtra = new RadioButton();
+            rdbVery = new RadioButton();
+            rdbModerately = new RadioButton();
+            rdbLightly = new RadioButton();
+            rdbSedentary = new RadioButton();
+            grpGender = new GroupBox();
+            rdbMale = new RadioButton();
+            rdbFemale = new RadioButton();
+            txtAge = new TextBox();
+            lblAge = new Label();
+            btnCalculateBmr = new Button();
+            mainFormBindingSource = new BindingSource(components);
             grpUnit.SuspendLayout();
             grpResult.SuspendLayout();
             pnlInches.SuspendLayout();
             grpSavings.SuspendLayout();
             groupBox1.SuspendLayout();
+            grpBmrCalculator.SuspendLayout();
+            grpWeeklyActivity.SuspendLayout();
+            grpGender.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnCalculate
@@ -82,8 +102,8 @@
             btnCalculate.Location = new Point(157, 200);
             btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(133, 51);
-            btnCalculate.TabIndex = 4;
-            btnCalculate.Text = "Calculate";
+            btnCalculate.TabIndex = 6;
+            btnCalculate.Text = "Calculate BMI";
             btnCalculate.UseVisualStyleBackColor = true;
             btnCalculate.Click += btnCalculate_Click;
             // 
@@ -99,14 +119,14 @@
             txtWeight.Location = new Point(107, 106);
             txtWeight.Name = "txtWeight";
             txtWeight.Size = new Size(60, 23);
-            txtWeight.TabIndex = 3;
+            txtWeight.TabIndex = 5;
             // 
             // txtHeight
             // 
             txtHeight.Location = new Point(107, 77);
             txtHeight.Name = "txtHeight";
             txtHeight.Size = new Size(60, 23);
-            txtHeight.TabIndex = 2;
+            txtHeight.TabIndex = 3;
             // 
             // rdbMetric
             // 
@@ -245,7 +265,7 @@
             txtInches.Location = new Point(23, 8);
             txtInches.Name = "txtInches";
             txtInches.Size = new Size(60, 23);
-            txtInches.TabIndex = 2;
+            txtInches.TabIndex = 4;
             // 
             // lblFeet
             // 
@@ -356,6 +376,7 @@
             txtFees.Name = "txtFees";
             txtFees.Size = new Size(100, 23);
             txtFees.TabIndex = 4;
+            txtFees.TextAlign = HorizontalAlignment.Right;
             // 
             // txtGrowth
             // 
@@ -363,6 +384,7 @@
             txtGrowth.Name = "txtGrowth";
             txtGrowth.Size = new Size(100, 23);
             txtGrowth.TabIndex = 3;
+            txtGrowth.TextAlign = HorizontalAlignment.Right;
             // 
             // txtPeriod
             // 
@@ -370,6 +392,7 @@
             txtPeriod.Name = "txtPeriod";
             txtPeriod.Size = new Size(100, 23);
             txtPeriod.TabIndex = 2;
+            txtPeriod.TextAlign = HorizontalAlignment.Right;
             // 
             // txtMonthly
             // 
@@ -377,6 +400,7 @@
             txtMonthly.Name = "txtMonthly";
             txtMonthly.Size = new Size(100, 23);
             txtMonthly.TabIndex = 1;
+            txtMonthly.TextAlign = HorizontalAlignment.Right;
             // 
             // txtInitial
             // 
@@ -384,6 +408,7 @@
             txtInitial.Name = "txtInitial";
             txtInitial.Size = new Size(100, 23);
             txtInitial.TabIndex = 0;
+            txtInitial.TextAlign = HorizontalAlignment.Right;
             // 
             // groupBox1
             // 
@@ -478,11 +503,175 @@
             lblAmountPaid.TabIndex = 0;
             lblAmountPaid.Text = "Amount paid";
             // 
+            // grpBmrCalculator
+            // 
+            grpBmrCalculator.Controls.Add(lbBmrResults);
+            grpBmrCalculator.Controls.Add(grpWeeklyActivity);
+            grpBmrCalculator.Controls.Add(grpGender);
+            grpBmrCalculator.Controls.Add(txtAge);
+            grpBmrCalculator.Controls.Add(lblAge);
+            grpBmrCalculator.Controls.Add(btnCalculateBmr);
+            grpBmrCalculator.Location = new Point(12, 501);
+            grpBmrCalculator.Name = "grpBmrCalculator";
+            grpBmrCalculator.Size = new Size(772, 267);
+            grpBmrCalculator.TabIndex = 10;
+            grpBmrCalculator.TabStop = false;
+            grpBmrCalculator.Text = "BMR Calculator";
+            // 
+            // lbBmrResults
+            // 
+            lbBmrResults.FormattingEnabled = true;
+            lbBmrResults.ItemHeight = 15;
+            lbBmrResults.Location = new Point(315, 22);
+            lbBmrResults.Name = "lbBmrResults";
+            lbBmrResults.Size = new Size(451, 229);
+            lbBmrResults.TabIndex = 11;
+            // 
+            // grpWeeklyActivity
+            // 
+            grpWeeklyActivity.Controls.Add(rdbExtra);
+            grpWeeklyActivity.Controls.Add(rdbVery);
+            grpWeeklyActivity.Controls.Add(rdbModerately);
+            grpWeeklyActivity.Controls.Add(rdbLightly);
+            grpWeeklyActivity.Controls.Add(rdbSedentary);
+            grpWeeklyActivity.Location = new Point(144, 22);
+            grpWeeklyActivity.Name = "grpWeeklyActivity";
+            grpWeeklyActivity.Size = new Size(165, 155);
+            grpWeeklyActivity.TabIndex = 1;
+            grpWeeklyActivity.TabStop = false;
+            grpWeeklyActivity.Text = "Weekly activity level";
+            // 
+            // rdbExtra
+            // 
+            rdbExtra.AutoSize = true;
+            rdbExtra.Location = new Point(6, 122);
+            rdbExtra.Name = "rdbExtra";
+            rdbExtra.Size = new Size(51, 19);
+            rdbExtra.TabIndex = 0;
+            rdbExtra.TabStop = true;
+            rdbExtra.Text = "Extra";
+            rdbExtra.UseVisualStyleBackColor = true;
+            rdbExtra.CheckedChanged += rdbExtra_CheckedChanged;
+            // 
+            // rdbVery
+            // 
+            rdbVery.AutoSize = true;
+            rdbVery.Location = new Point(6, 97);
+            rdbVery.Name = "rdbVery";
+            rdbVery.Size = new Size(47, 19);
+            rdbVery.TabIndex = 0;
+            rdbVery.TabStop = true;
+            rdbVery.Text = "Very";
+            rdbVery.UseVisualStyleBackColor = true;
+            rdbVery.CheckedChanged += rdbVery_CheckedChanged;
+            // 
+            // rdbModerately
+            // 
+            rdbModerately.AutoSize = true;
+            rdbModerately.Location = new Point(6, 72);
+            rdbModerately.Name = "rdbModerately";
+            rdbModerately.Size = new Size(85, 19);
+            rdbModerately.TabIndex = 0;
+            rdbModerately.TabStop = true;
+            rdbModerately.Text = "Moderately";
+            rdbModerately.UseVisualStyleBackColor = true;
+            rdbModerately.CheckedChanged += rdbModerately_CheckedChanged;
+            // 
+            // rdbLightly
+            // 
+            rdbLightly.AutoSize = true;
+            rdbLightly.Location = new Point(6, 47);
+            rdbLightly.Name = "rdbLightly";
+            rdbLightly.Size = new Size(61, 19);
+            rdbLightly.TabIndex = 0;
+            rdbLightly.TabStop = true;
+            rdbLightly.Text = "Lightly";
+            rdbLightly.UseVisualStyleBackColor = true;
+            rdbLightly.CheckedChanged += rdbLightly_CheckedChanged;
+            // 
+            // rdbSedentary
+            // 
+            rdbSedentary.AutoSize = true;
+            rdbSedentary.Location = new Point(6, 22);
+            rdbSedentary.Name = "rdbSedentary";
+            rdbSedentary.Size = new Size(77, 19);
+            rdbSedentary.TabIndex = 9;
+            rdbSedentary.TabStop = true;
+            rdbSedentary.Text = "Sedentary";
+            rdbSedentary.UseVisualStyleBackColor = true;
+            rdbSedentary.CheckedChanged += rdbSedentary_CheckedChanged;
+            // 
+            // grpGender
+            // 
+            grpGender.Controls.Add(rdbMale);
+            grpGender.Controls.Add(rdbFemale);
+            grpGender.Location = new Point(6, 22);
+            grpGender.Name = "grpGender";
+            grpGender.Size = new Size(116, 88);
+            grpGender.TabIndex = 0;
+            grpGender.TabStop = false;
+            grpGender.Text = "Gender";
+            // 
+            // rdbMale
+            // 
+            rdbMale.AutoSize = true;
+            rdbMale.Location = new Point(6, 47);
+            rdbMale.Name = "rdbMale";
+            rdbMale.Size = new Size(51, 19);
+            rdbMale.TabIndex = 1;
+            rdbMale.TabStop = true;
+            rdbMale.Text = "Male";
+            rdbMale.UseVisualStyleBackColor = true;
+            rdbMale.CheckedChanged += rdbMale_CheckedChanged;
+            // 
+            // rdbFemale
+            // 
+            rdbFemale.AutoSize = true;
+            rdbFemale.Location = new Point(6, 22);
+            rdbFemale.Name = "rdbFemale";
+            rdbFemale.Size = new Size(63, 19);
+            rdbFemale.TabIndex = 7;
+            rdbFemale.TabStop = true;
+            rdbFemale.Text = "Female";
+            rdbFemale.UseVisualStyleBackColor = true;
+            rdbFemale.CheckedChanged += rdbFemale_CheckedChanged;
+            // 
+            // txtAge
+            // 
+            txtAge.Location = new Point(62, 124);
+            txtAge.Name = "txtAge";
+            txtAge.Size = new Size(60, 23);
+            txtAge.TabIndex = 8;
+            // 
+            // lblAge
+            // 
+            lblAge.AutoSize = true;
+            lblAge.Location = new Point(6, 127);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(45, 15);
+            lblAge.TabIndex = 3;
+            lblAge.Text = "Weight";
+            // 
+            // btnCalculateBmr
+            // 
+            btnCalculateBmr.Location = new Point(94, 197);
+            btnCalculateBmr.Name = "btnCalculateBmr";
+            btnCalculateBmr.Size = new Size(133, 51);
+            btnCalculateBmr.TabIndex = 10;
+            btnCalculateBmr.Text = "Calculate BMR";
+            btnCalculateBmr.UseVisualStyleBackColor = true;
+            btnCalculateBmr.Click += btnCalculateBmr_Click;
+            // 
+            // mainFormBindingSource
+            // 
+            mainFormBindingSource.DataSource = typeof(MainForm);
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(814, 516);
+            ClientSize = new Size(796, 780);
+            Controls.Add(grpBmrCalculator);
             Controls.Add(groupBox1);
             Controls.Add(grpSavings);
             Controls.Add(pnlInches);
@@ -500,6 +689,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Body Mass Index Calculator by Samuel Jeffman";
+            Load += MainForm_Load;
             grpUnit.ResumeLayout(false);
             grpUnit.PerformLayout();
             grpResult.ResumeLayout(false);
@@ -510,6 +700,13 @@
             grpSavings.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            grpBmrCalculator.ResumeLayout(false);
+            grpBmrCalculator.PerformLayout();
+            grpWeeklyActivity.ResumeLayout(false);
+            grpWeeklyActivity.PerformLayout();
+            grpGender.ResumeLayout(false);
+            grpGender.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)mainFormBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -558,5 +755,20 @@
         private Label lblFinalAmount;
         private Label lblTotalFeesValue;
         private Label lblTotalFees;
+        private GroupBox grpBmrCalculator;
+        private GroupBox grpGender;
+        private RadioButton rdbFemale;
+        private RadioButton rdbMale;
+        private GroupBox grpWeeklyActivity;
+        private RadioButton rdbSedentary;
+        private RadioButton rdbLightly;
+        private RadioButton rdbModerately;
+        private RadioButton rdbVery;
+        private RadioButton rdbExtra;
+        private TextBox txtAge;
+        private Label lblAge;
+        private Button btnCalculateBmr;
+        private BindingSource mainFormBindingSource;
+        private ListBox lbBmrResults;
     }
 }

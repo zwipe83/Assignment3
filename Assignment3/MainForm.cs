@@ -37,11 +37,9 @@ namespace Assignment3
             {
                 // TODO: Maybe this method can be simplified further?
                 UnitTypes unit = rdbMetric.Checked ? UnitTypes.Metric : UnitTypes.Imperial;
-
-                string name = ui.ReadTextAsString(txtName.Text);
-                double height = ui.ReadTextAsDouble(txtHeight.Text);
-                double weight = ui.ReadTextAsDouble(txtWeight.Text);
-                double inches = unit == UnitTypes.Imperial ? ui.ReadTextAsDouble(txtInches.Text) : 0.0;
+                string name;
+                double height, weight, inches;
+                ReadUserData(unit, out name, out height, out weight, out inches);
 
                 bmiCalculator.SetName(name);
                 bmiCalculator.SetHeight(height, inches);
@@ -62,6 +60,14 @@ namespace Assignment3
             {
                 MessageBox.Show($"Error:\n{ex.Message}");
             }
+        }
+
+        private void ReadUserData(UnitTypes unit, out string name, out double height, out double weight, out double inches)
+        {
+            name = ui.ReadTextAsString(txtName.Text);
+            height = ui.ReadTextAsDouble(txtHeight.Text);
+            weight = ui.ReadTextAsDouble(txtWeight.Text);
+            inches = unit == UnitTypes.Imperial ? ui.ReadTextAsDouble(txtInches.Text) : 0.0;
         }
 
         /// <summary>
@@ -110,5 +116,97 @@ namespace Assignment3
             lblTotalFeesValue.Text = $"{savingCalculator.TotalFees:N2}";
         }
         #endregion
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            rdbFemale.Checked = true;
+            rdbMetric.Checked = true;
+            rdbSedentary.Checked = true;
+        }
+
+        private void btnCalculateBmr_Click(object sender, EventArgs e)
+        {
+            UnitTypes unit = rdbMetric.Checked ? UnitTypes.Metric : UnitTypes.Imperial;
+            string name;
+            double height, weight, inches;
+            ReadUserData(unit, out name, out height, out weight, out inches);
+
+            bmrCalculator.SetName(name);
+            bmrCalculator.SetHeight(height, inches);
+            bmrCalculator.SetWeight(weight);
+            bmrCalculator.SetUnit(unit);
+            bmrCalculator.Age = ui.ReadTextAsInt(txtAge.Text);
+
+            bmrCalculator.CalculateBmr();
+            bmrCalculator.CalculateCaloriesToMaintainWeight();
+
+            lbBmrResults.Items.Clear();
+            lbBmrResults.Items.Add($"BMR RESULTS FOR {bmrCalculator.GetName()}\n\n");
+            lbBmrResults.Items.Add("");
+            lbBmrResults.Items.Add($"Your BMR (calories/day)\t\t\t{bmrCalculator.Bmr:N1}");
+            lbBmrResults.Items.Add($"Calories to maintain your weight\t\t{bmrCalculator.CaloriesToMaintainWeight:N1}");
+            lbBmrResults.Items.Add($"Calories to lose 0.5 kg per week\t\t{bmrCalculator.CalculateCaloriesToChangeWeight(-500):N1}");
+            lbBmrResults.Items.Add($"Calories to lose 1.0 kg per week\t\t{bmrCalculator.CalculateCaloriesToChangeWeight(-1000):N1}");
+            lbBmrResults.Items.Add($"Calories to gain 0.5 kg per week\t\t{bmrCalculator.CalculateCaloriesToChangeWeight(500):N1}");
+            lbBmrResults.Items.Add($"Calories to gain 1.0 kg per week\t\t{bmrCalculator.CalculateCaloriesToChangeWeight(1000):N1}");
+            lbBmrResults.Items.Add("");
+            lbBmrResults.Items.Add($"Losing more than 1000 calories per day is to be avoided.");
+        }
+
+        private void rdbSedentary_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbSedentary.Checked)
+            {
+                bmrCalculator.ActivityLevel = Activity.ActivityLevel.Sedentary;
+            }
+        }
+
+        private void rdbLightly_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbLightly.Checked)
+            {
+                bmrCalculator.ActivityLevel = Activity.ActivityLevel.LightlyActive;
+            }
+        }
+
+        private void rdbModerately_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbModerately.Checked)
+            {
+                bmrCalculator.ActivityLevel = Activity.ActivityLevel.ModeratelyActive;
+            }
+        }
+
+        private void rdbVery_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbVery.Checked)
+            {
+                bmrCalculator.ActivityLevel = Activity.ActivityLevel.VeryActive;
+            }
+        }
+
+        private void rdbExtra_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbExtra.Checked)
+            {
+                bmrCalculator.ActivityLevel = Activity.ActivityLevel.ExtraActive;
+            }
+        }
+
+        private void rdbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbFemale.Checked)
+            {
+                bmrCalculator.Gender = Gender.Female;
+            }
+        }
+
+        private void rdbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbMale.Checked)
+            {
+                bmrCalculator.Gender = Gender.Male;
+            }
+        }
     }
 }
