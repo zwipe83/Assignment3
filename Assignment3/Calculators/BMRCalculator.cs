@@ -1,7 +1,19 @@
-﻿using static Assignment3.Activity;
+﻿
+/// <summary>
+/// Filename: BMRCalculator.cs
+/// Created on: 2024-02-26 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
-namespace Assignment3
+using Assignment3.Enumerators;
+using Assignment3.Utils;
+using static Assignment3.Enumerators.Activity;
+
+namespace Assignment3.Calculators
 {
+    /// <summary>
+    /// This class handles BMR calculations. The class inherits from BMICalculator. Private fields are accesible via Properties.
+    /// </summary>
     internal class BMRCalculator : BMICalculator
     {
         #region Fields
@@ -22,24 +34,12 @@ namespace Assignment3
 
         #endregion
         #region Constructors
-        public BMRCalculator()
-        {/*
-            SetHeight(194);
-            SetWeight(98);
-            Age = 40;
-            Gender = Gender.Male;
-            ActivityLevel = ActivityLevel.LightlyActive;
-
-            Bmr = 10 * GetWeight() + 6.25 * GetHeight() - 5 * Age;*/
-            double maintainWeightBMR = Bmr * GetActivityFactor(ActivityLevel);
-            double lose500 = maintainWeightBMR - 500;
-            double lose1000 = maintainWeightBMR - 1000;
-            double add500 = maintainWeightBMR + 500;
-            double add1000 = maintainWeightBMR + 1000;
-            var dummy = 0;
-        }
+        public BMRCalculator() { }
         #endregion
         #region Methods
+        /// <summary>
+        /// Calculate BMR for current user
+        /// </summary>
         public void CalculateBmr()
         {
             double weight = GetWeight();
@@ -49,14 +49,19 @@ namespace Assignment3
                 weight = UnitConversion.PoundsToKilograms(weight);
                 height = UnitConversion.FeetToCentimeters(height);
             }
-            Bmr = (10 * weight + 6.25 * height - 5 * Age) + ((Gender == Gender.Female) ? femaleOffset : maleOffset);
+            Bmr = 10 * weight + 6.25 * height - 5 * Age + (Gender == Gender.Female ? femaleOffset : maleOffset);
         }
-
+        /// <summary>
+        /// Calculate Calories to maintain weight based on current users activitylevel
+        /// </summary>
         public void CalculateCaloriesToMaintainWeight()
         {
             CaloriesToMaintainWeight = Bmr * GetActivityFactor(ActivityLevel);
         }
 
+        /// <summary>
+        /// Calculate Calories to change weight based on current users activitylevel
+        /// </summary>
         public double CalculateCaloriesToChangeWeight(double weightChangePerWeek)
         {
             return CaloriesToMaintainWeight + weightChangePerWeek;

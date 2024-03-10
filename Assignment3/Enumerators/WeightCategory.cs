@@ -1,7 +1,15 @@
-﻿using System.ComponentModel;
+﻿
+/// <summary>
+/// Filename: WeightCategory.cs
+/// Created on: 2024-03-01 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
-namespace Assignment3
+using System.ComponentModel;
+
+namespace Assignment3.Enumerators
 {
+    #region Enums
     /// <summary>
     /// Enumerate weight categories
     /// </summary>
@@ -20,4 +28,5 @@ namespace Assignment3
         [Description("Overweight (Obesity class III)")]
         ObesityClassIII
     }
+    #endregion
 }

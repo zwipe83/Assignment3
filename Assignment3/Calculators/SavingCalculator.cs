@@ -1,5 +1,16 @@
-﻿namespace Assignment3
+﻿
+/// <summary>
+/// Filename: SavingCalculator.cs
+/// Created on: 2024-02-26 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
+/// 
+
+namespace Assignment3.Calculators
 {
+    /// <summary>
+    /// This class handles savings account calculations. Private fields are accesible via Properties.
+    /// </summary>
     internal class SavingCalculator
     {
         #region Fields
@@ -31,31 +42,24 @@
         public decimal Balance { get { return _balance; } internal set { _balance = value; } }
         #endregion
         #region Constructors
-        public SavingCalculator()
-        {
-            InitialDeposit = 0.0M;
-            MonthlyDeposit = 0.0M;
-            PeriodInMonths = 0;
-            PeriodInYears = 0;
-            YearlyInterestRate = 0;
-            YearlyFees = 0;
-            TotalAmountPaid = 0.0M;
-            TotalAmountEarned = 0.0M;
-            Balance = 0.0M;
-        }
+        public SavingCalculator() { }
         #endregion
         #region Methods
 
+        /// <summary>
+        /// Perform calculation of final balance and take into account interest and fees.
+        /// </summary>
         public void CalculateFinalBalance()
         {
-
-            Balance = InitialDeposit + MonthlyDeposit;
-            TotalAmountPaid = InitialDeposit + MonthlyDeposit;
-            PeriodInMonths = PeriodInYears * 12;
-            MonthlyInterestRate = YearlyInterestRate / 100 / 12;
-            MonthlyFees = YearlyFees / 100 / 12;
-            TotalAmountEarned = 0.0M;
+            TotalAmountEarned = 0.0M; //Reset
             TotalFees = 0.0M;
+
+            SetBalance();
+            SetTotalAmountPaid();
+            CalculatePeriodInMonths();
+            CalculateMonthlyInterest();
+            CalculateMonthlyFees();
+
             for (int month = 1; month < PeriodInMonths; month++)
             {
                 TotalAmountPaid += MonthlyDeposit;
@@ -65,6 +69,41 @@
                 TotalAmountEarned += interest;
                 TotalFees += fees;
             }
+        }
+        /// <summary>
+        /// Calculate how much you will pay for bank fees per month
+        /// </summary>
+        private void CalculateMonthlyFees()
+        {
+            MonthlyFees = YearlyFees / 100 / 12;
+        }
+        /// <summary>
+        /// Calculate monthly interest
+        /// </summary>
+        private void CalculateMonthlyInterest()
+        {
+            MonthlyInterestRate = YearlyInterestRate / 100 / 12;
+        }
+        /// <summary>
+        /// Calculate how many months your savings will run
+        /// </summary>
+        private void CalculatePeriodInMonths()
+        {
+            PeriodInMonths = PeriodInYears * 12;
+        }
+        /// <summary>
+        /// Set initial total amount paid
+        /// </summary>
+        private void SetTotalAmountPaid()
+        {
+            TotalAmountPaid = InitialDeposit + MonthlyDeposit;
+        }
+        /// <summary>
+        /// Set initial account balance
+        /// </summary>
+        private void SetBalance()
+        {
+            Balance = InitialDeposit + MonthlyDeposit;
         }
         #endregion
     }

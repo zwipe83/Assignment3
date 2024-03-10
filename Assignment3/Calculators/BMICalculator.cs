@@ -1,7 +1,18 @@
-﻿using static Assignment3.UnitConversion;
+﻿
+/// <summary>
+/// Filename: BMICalculator.cs
+/// Created on: 2024-02-18 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
-namespace Assignment3
+using Assignment3.Enumerators;
+using static Assignment3.Utils.UnitConversion;
+
+namespace Assignment3.Calculators
 {
+    /// <summary>
+    /// This class handles BMI calculations. Private fields are accesible via setters and getters.
+    /// </summary>
     internal class BMICalculator
     {
         #region Fields
@@ -9,11 +20,11 @@ namespace Assignment3
         private double height = 0.0; //cm,ft
         private double weight = 0.0; //kg,lbs
         private UnitTypes unit;
-        private double bmi = 0.0; // TODO: Maybe not needed?
+        private double bmi = 0.0;
         private readonly double imperialConversionFactor = 703.0;
         private readonly double metricConversionFactor = 1.0;
-        private WeightCategory weightCategory; // TODO: Maybe not needed?
-        private double[] normalWeight = [0.0, 0.0];// TODO: Maybe not needed?
+        private WeightCategory weightCategory;
+        private double[] normalWeight = [0.0, 0.0];
 
         internal enum WeightRange
         {
@@ -37,6 +48,7 @@ namespace Assignment3
         public double[] GetNormalWeight() { return normalWeight; }
         #endregion
         #region Properties
+        //Not used, implemented as setters and getters instead
         /*public string? Name { get { return name; } set { name = value; } }
         public double Height { get { return height; } set { height = value; } }
         public double Weight { get { return weight; } set { weight = value; } }
@@ -53,25 +65,20 @@ namespace Assignment3
         /// <exception cref="NotImplementedException"></exception>
         internal void CalculateBMI(UnitTypes unit)
         {
-            try
+            switch (unit)
             {
-                switch (unit)
-                {
-                    case UnitTypes.Metric:
-                        bmi = weight / (Math.Pow(CentimetersToMeters(height), 2));
-                        break;
-                    case UnitTypes.Imperial:
-                        bmi = imperialConversionFactor * weight / (Math.Pow(FeetToInches(height), 2));
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                }
-                weightCategory = GetCategory();
+                case UnitTypes.Metric:
+                    double heightMeters = CentimetersToMeters(height);
+                    bmi = weight / (heightMeters * heightMeters);
+                    break;
+                case UnitTypes.Imperial:
+                    double heightInches = FeetToInches(height);
+                    bmi = imperialConversionFactor * weight / (heightInches * heightInches);
+                    break;
+                default:
+                    break;
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            weightCategory = GetCategory();
         }
 
         /// <summary>
@@ -92,7 +99,6 @@ namespace Assignment3
                     break;
                 default:
                     break;
-
             }
         }
 

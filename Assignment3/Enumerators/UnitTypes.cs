@@ -1,6 +1,13 @@
-﻿using System.ComponentModel;
+﻿
+/// <summary>
+/// Filename: UintTypes.cs
+/// Created on: 2024-02-18 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
-namespace Assignment3
+using System.ComponentModel;
+
+namespace Assignment3.Enumerators
 {
     #region Enums
     /// <summary>

@@ -1,8 +1,17 @@
-﻿using System.ComponentModel;
+﻿
+/// <summary>
+/// Filename: Activity.cs
+/// Created on: 2024-03-01 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
-namespace Assignment3
+using System.ComponentModel;
+
+namespace Assignment3.Enumerators
 {
-
+    /// <summary>
+    /// This class handles Activity level and activity factor.
+    /// </summary>
     internal static class Activity
     {
         #region Fields
@@ -16,6 +25,9 @@ namespace Assignment3
         };
         #endregion
         #region Properties
+        /// <summary>
+        /// Dictionary containing activity factors based on activity level
+        /// </summary>
         public static Dictionary<ActivityLevel, double> ActivityFactors { get { return _activityFactors; } }
         #endregion
         #region Enums
@@ -34,6 +46,11 @@ namespace Assignment3
         }
         #endregion
         #region Methods
+        /// <summary>
+        /// Get activity factor based on provided activity level
+        /// </summary>
+        /// <param name="activityLevel"></param>
+        /// <returns>Activity factor as a double</returns>
         public static double GetActivityFactor(ActivityLevel activityLevel)
         {
             return ActivityFactors[activityLevel];
