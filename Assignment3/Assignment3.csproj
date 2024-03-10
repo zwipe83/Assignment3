@@ -14,4 +14,12 @@
     <Folder Include="Properties\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\sjeff\OneDrive\Dokument\Utbildning\Malmö - Programming CSharp\03 - Moduler\03 - Modul 3\04 - Uppgifter\01 - A3\work\Assignment3\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\sjeff\OneDrive\Dokument\Utbildning\Malmö - Programming CSharp\03 - Moduler\03 - Modul 3\04 - Uppgifter\01 - A3\work\Assignment3\.editorconfig" />
+  </ItemGroup>
+
 </Project>

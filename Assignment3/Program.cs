@@ -1,3 +1,10 @@
+
+/// <summary>
+/// Filename: Program.cs
+/// Created on: 2024-02-18 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
+
 namespace Assignment3
 {
     internal static class Program
